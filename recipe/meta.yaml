@@ -32,6 +32,7 @@ test:
     # Can't run this command without an AMD GPU
     - test -f $PREFIX/bin/rocminfo
     - test -f $PREFIX/bin/rocm_agent_enumerator
+    - $PREFIX/bin/rocminfo
 
 about:
   home: https://github.com/ROCm/rocminfo
