@@ -26,6 +26,7 @@ requirements:
     - rocr-runtime {{ version }}
   run:
     - rocr-runtime {{ version }}
+    - libnuma
 
 test:
   commands:
