@@ -8,5 +8,3 @@ os_version:
   linux_64: cos7
 bot:
   automerge: true
-azure:
-  store_build_artifacts: true
