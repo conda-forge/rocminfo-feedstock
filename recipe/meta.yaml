@@ -10,7 +10,7 @@ source:
   sha256: e616d364a48de18eaee661bdce999d095086905f49777663ca99312f40a63da1
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not linux]
 
 requirements:
@@ -18,20 +18,22 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - sysroot_linux-64 2.17  # [linux64]
-    - {{ cdt('numactl-devel') }}
     - {{ cdt('pciutils-devel') }}
     - cmake
     - make
   host:
+    - numactl
     - rocr-runtime {{ version }}
   run:
     - rocr-runtime {{ version }}
+    - libnuma
 
 test:
   commands:
     # Can't run this command without an AMD GPU
     - test -f $PREFIX/bin/rocminfo
     - test -f $PREFIX/bin/rocm_agent_enumerator
+    - msg=$($PREFIX/bin/rocminfo 2>&1; test $? -eq 1) && test "$msg" = "$(echo -e '\033[31mROCk module is NOT loaded, possibly no GPU devices\033[0m')"   # [CI]
 
 about:
   home: https://github.com/ROCm/rocminfo
@@ -43,3 +45,4 @@ about:
 extra:
   recipe-maintainers:
     - isuruf
+    - zklaus
