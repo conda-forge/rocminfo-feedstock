@@ -1,5 +1,5 @@
 {% set name = "rocminfo" %}
-{% set version = "6.1.0" %}
+{% set version = "6.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-{{ version }}.tar.gz
-  sha256: 973352210fdc65932f0125e2db68729383727eaf4ebb7f52c88a948c14bbbb73
+  sha256: 4d9a9051bda3355f8d2050e981435cd02528a04264a7f61162d685e7e1629f73
 
 build:
   number: 0
@@ -16,8 +16,8 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - sysroot_linux-64 2.17  # [linux64]
     - {{ cdt('pciutils-devel') }}
     - cmake
     - make
