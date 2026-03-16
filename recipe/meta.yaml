@@ -10,7 +10,7 @@ source:
   sha256: 08390b2babe6dc832887098c5d3a5253d655430a18751f3446a56c7422b26dd2
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
@@ -18,7 +18,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - {{ cdt('pciutils-devel') }}
     - cmake
     - make
   host:
